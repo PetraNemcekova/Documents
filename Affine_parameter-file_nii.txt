@@ -1,0 +1,58 @@
+// **************** Image Types ******************************
+
+(FixedInternalImagePixelType "float")
+(MovingInternalImagePixelType "float")
+(FixedImageDimension 3)
+(MovingImageDimension 3)
+(UseDirectionCosines "true")
+
+// **************** Main Components **************************
+
+(Registration "MultiResolutionRegistration")
+(Interpolator "BSplineInterpolator")
+(ResampleInterpolator "FinalBSplineInterpolator")
+(Resampler "DefaultResampler")
+(FixedImagePyramid "FixedRecursiveImagePyramid")
+(MovingImagePyramid "MovingRecursiveImagePyramid")
+(Optimizer "AdaptiveStochasticGradientDescent")
+//(Transform "EulerTransform")
+//(Transform "TranslationTransform")
+(Transform "AffineTransform")
+//(Metric "AdvancedMeanSquares")
+(Metric "AdvancedMattesMutualInformation")
+
+// ***************** Transformation **************************
+
+(AutomaticScalesEstimation "true")
+(AutomaticTransformInitialization "false")
+(HowToCombineTransforms "Compose")
+
+// ******************* Similarity measure *********************
+
+(UseNormalization "true")
+(ErodeMask "true")
+
+// ******************** Multiresolution **********************
+
+(NumberOfResolutions 4 )
+(ImagePyramidSchedule 8 8 8  4 4 4  2 2 2  1 1 1 )
+
+// ******************* Optimizer ****************************
+
+(MaximumNumberOfIterations 1800)
+(MaximumStepLength 1.0)
+
+// **************** Image sampling **********************
+
+(NumberOfSpatialSamples 2048)
+(NewSamplesEveryIteration "true")
+(ImageSampler "Random")
+
+// ************* Interpolation and Resampling ****************
+
+(BSplineInterpolationOrder 1)
+(FinalBSplineInterpolationOrder 1)
+(DefaultPixelValue 0)
+(WriteResultImage "true")
+(ResultImagePixelType "short")
+(ResultImageFormat "nii.gz")
